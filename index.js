@@ -1,19 +1,23 @@
 let humanScore = 0;
 let computerScore = 0;
+let numberOfRounds = 0;
+function computerInput() {
+  let computerInput = Math.floor(Math.random() * 3);
 
-let computerInput = Math.floor(Math.random() * 3);
-switch (computerInput) {
-  case 0:
-    computerInput = "rock";
-    break;
+  switch (computerInput) {
+    case 0:
+      computerInput = "rock";
+      break;
 
-  case 1:
-    computerInput = "paper";
-    break;
+    case 1:
+      computerInput = "paper";
+      break;
 
-  case 2:
-    computerInput = "scissors";
-    break;
+    case 2:
+      computerInput = "scissors";
+      break;
+  }
+  return computerInput;
 }
 
 function getHumanChoice() {
@@ -21,7 +25,7 @@ function getHumanChoice() {
   return humanInput;
 }
 const humanFinalChoice = getHumanChoice();
-const computerFinalChoice = computerInput;
+const computerFinalChoice = computerInput();
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     console.log("DRAW!");
@@ -62,4 +66,10 @@ function playRound(humanChoice, computerChoice) {
 console.log(`machine: ${computerFinalChoice}`);
 
 console.log(`human: ${humanFinalChoice}`);
-playRound(humanFinalChoice, computerFinalChoice);
+
+function playGame(numberOfRounds) {
+  playRound(humanFinalChoice, computerFinalChoice);
+  numberOfRounds += 1;
+  console.log(`rounds played: ${numberOfRounds}`);
+}
+playGame(numberOfRounds);
