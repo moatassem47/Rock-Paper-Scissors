@@ -76,7 +76,7 @@ function playGame() {
   } else if (computerScore < humanScore) {
     console.log("HUMAN WINS!");
   } else {
-    console.log("DRAW!");
+    console.log("IT'S A DRAW!");
   }
 }
 playGame();
