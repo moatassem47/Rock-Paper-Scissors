@@ -24,8 +24,6 @@ function getHumanChoice() {
   let humanInput = prompt("rock, paper or scissors?");
   return humanInput;
 }
-const humanFinalChoice = getHumanChoice();
-const computerFinalChoice = computerInput();
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     console.log("DRAW!");
@@ -58,18 +56,27 @@ function playRound(humanChoice, computerChoice) {
     console.log(`computer's score = ${computerScore}`);
   } else if (humanChoice === "scissors" && computerChoice === "paper") {
     console.log("human wins");
-    humanChoice += 1;
+    humanScore += 1;
     console.log(`human's score = ${humanScore}`);
     console.log(`computer's score = ${computerScore}`);
   }
 }
-console.log(`machine: ${computerFinalChoice}`);
 
-console.log(`human: ${humanFinalChoice}`);
-
-function playGame(numberOfRounds) {
-  playRound(humanFinalChoice, computerFinalChoice);
-  numberOfRounds += 1;
-  console.log(`rounds played: ${numberOfRounds}`);
+function playGame() {
+  for (i = 0; i < 5; i++) {
+    console.log("=================================");
+    hChoice = getHumanChoice();
+    cChoice = computerInput();
+    console.log(`human choice is ${hChoice}  `);
+    console.log(`computer choice is ${cChoice}  `);
+    playRound(hChoice, cChoice);
+  }
+  if (computerScore > humanScore) {
+    console.log("COMPUTER WINS!!");
+  } else if (computerScore < humanScore) {
+    console.log("HUMAN WINS!");
+  } else {
+    console.log("DRAW!");
+  }
 }
-playGame(numberOfRounds);
+playGame();
